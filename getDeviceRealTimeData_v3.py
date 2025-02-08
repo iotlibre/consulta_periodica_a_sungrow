@@ -204,7 +204,7 @@ parser = configparser.ConfigParser()
 parser.read('config_sungrow_server.ini')
 parser_sungrow()
 need_new_key()
-serverReading(60.0)
+serverReading(300.0)
 
 
     
