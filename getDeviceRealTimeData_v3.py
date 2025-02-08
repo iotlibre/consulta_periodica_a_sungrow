@@ -24,7 +24,7 @@ Para comprobar los posibles problemas level=logging.WARNINg
 Para comprobar el funcionamiento: level=logging.DEBUG
 '''
 logging.basicConfig(
-        level=logging.DEBUG,
+        level=logging.INFO,
         handlers=[RotatingFileHandler('./logs/log_datadis.log', maxBytes=1000000, backupCount=4)],
         format='%(asctime)s %(levelname)s %(message)s',
         datefmt='%m/%d/%Y %I:%M:%S %p')
@@ -157,8 +157,8 @@ def serverReading(tm):
                 s_energy = response.json()['result_data']['device_point_list'][0]['device_point']['p88']
                 s_power = response.json()['result_data']['device_point_list'][0]['device_point']['p24']
                 s_value = str({"power" : s_power,"energy" : s_energy})
-                print("power: ",s_power )
-                print("energy:  ", s_energy)
+                # print("power: ",s_power )
+                # print("energy:  ", s_energy)
                 mqtt_tx(s_client,s_value)
 
             elif response.json()['result_code'] == "E00003":
