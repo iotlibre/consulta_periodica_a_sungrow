@@ -1,6 +1,7 @@
 '''
 Version:
-V0 serverReading basico funcionando
+V3 serverReading basico funcionando
+V4 envio por mqtt solamente la energia para compatibilizar con Huawei
 
 '''
 
@@ -155,8 +156,9 @@ def serverReading(tm):
                 #['p88']['p24'] <class 'str'>
                 s_client = response.json()['result_data']['device_point_list'][0]['device_point']['device_sn']
                 s_energy = response.json()['result_data']['device_point_list'][0]['device_point']['p88']
-                s_power = response.json()['result_data']['device_point_list'][0]['device_point']['p24']
-                s_value = str({"power" : s_power,"energy" : s_energy})
+                # s_power = response.json()['result_data']['device_point_list'][0]['device_point']['p24']
+                # s_value = str({"power" : s_power,"energy" : s_energy})
+                s_value = str(s_energy)
                 # print("power: ",s_power )
                 # print("energy:  ", s_energy)
                 mqtt_tx(s_client,s_value)
